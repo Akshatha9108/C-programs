@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1684385202 source:/home/student/ai009-sem4/DAA -21AI009/sieve Algorithm/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

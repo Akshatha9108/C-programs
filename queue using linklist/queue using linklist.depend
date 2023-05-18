@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1672290665 source:/home/student/4nm21ai009/queue using linklist/main.c
+	<stdio.h>
+	<stdlib.h>
+
