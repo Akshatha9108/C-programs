@@ -1,1 +1,1 @@
-# C-programs
+# This article will teach about the Design and Analysis of Algorithms. We will learn the need for algorithms and the description of algorithms. We will learn about the types of algorithms and the design implementation.
