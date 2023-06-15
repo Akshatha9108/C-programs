@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1686822931 source:/home/student/ai009-sem4/DAA -21AI009/DFS/main.c
+	<stdio.h>
+	<stdlib.h>
+
