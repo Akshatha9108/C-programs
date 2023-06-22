@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1687427291 source:/home/student/ai009-sem4/DAA -21AI009/Brute_force_algor/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+

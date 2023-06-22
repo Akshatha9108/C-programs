@@ -1,78 +1,76 @@
 #include <stdio.h>
-#include<stdlib.h>
-void mergesort(int arr[], int l, int h);
-void main(void)
+#include <stdlib.h>
+void Merge(int b[ ],int c[ ],int a[ ],int p,int q)
 {
-    int array[100],n,i = 0;
-
-    printf("\t\t\tMerge Sort\n\n\n\n");
-    printf("Enter the number of elements to be sorted: ");
-    scanf("%d",&n);
-    printf("\nEnter the elements to be sorted: \n");
-    for(i = 0 ; i < n ; i++ )
+    int i=0,j=0,k=0;
+    while(i<p && j<q) //whether any subarray b or c is exhausted
     {
-        printf("\tArray[%d] = ",i);
-        scanf("%d",&array[i]);
-    }
-    printf("\nBefore Mergesort:");
-    for(i = 0; i < n; i++)
-    {
-        printf("%4d", array[i]);
-    }
-    printf("\n");
-    mergesort(array, 0, n - 1);
-    printf("\nAfter Mergesort:");
-    for(i = 0; i < n; i++)
-
-    {
-        printf("%4d", array[i]);
-    }
-    printf("\n");
- return 0;
-}
-void mergesort(int arr[], int l, int h)
-{
-    int i = 0;
-    int length = h - l + 1;
-    int pivot = 0;
-    int merge1 = 0;
-    int merge2 = 0;
-    int temp[100];
-    if(l == h)
-        return;
-    pivot = (l + h) / 2;
-    mergesort(arr, l, pivot);
-    mergesort(arr, pivot + 1, h);
-    for(i = 0; i < length; i++)
-    {
-        temp[i] = arr[l + i];
-    }
-    merge1 = 0;
-    merge2 = pivot - l + 1;
-    for(i = 0; i < length; i++)
-    {
-        if(merge2 <= h - l)
+        if(b[i]<=c[j])
         {
-            if(merge1 <= pivot - l)
-            {
-                if(temp[merge1] > temp[merge2])
-                {
-                    arr[i + l] = temp[merge2++];
-                }
-                else
-                {
-                    arr[i + l] = temp[merge1++];
-                }
-            }
-            else
-            {
-                arr[i + l] = temp[merge2++];
-            }
+            a[k]=b[i];
+            i++;
         }
         else
         {
-            arr[i + l] = temp[merge1++];
+            a[k]=c[j];
+            j++;
+        }
+        k++;
+    }
+    if(i==p)
+    {
+        while(j<q && k<(p+q))
+        {
+            a[k]=c[j];
+            j++;
+            k++;
         }
     }
-
+    else
+    {
+        while(i<p && k<(p+q))
+        {
+            a[k]=b[i];
+            k++;
+            i++;
+        }
+    }
+}
+void mergeSort(int n,int a[ ])
+{
+    if(n>1)
+    {
+        int i,j,len;
+        len=n/2;
+        int b[len],c[n-len]; //divide array into two subarrays of equal parts
+        for(i=0,j=0; i<len && j<len; i++,j++)
+        {
+            b[j]=a[i];
+        }
+        for(i=len,j=0; i<n && j<n-len; i++,j++)
+        {
+            c[j]=a[i];
+        }
+        mergeSort(len, b);
+        mergeSort(n-len, c);
+        Merge(b,c,a,len,n-len);
+    }
+}
+int main( )
+{
+    int i,n;
+    printf("Enter the number of elements : ");
+    scanf("%d",&n);
+    int a[n];
+    printf("Enter %d elements :\n",n);
+    for(i=0; i<n; i++)
+        scanf("%d",&a[i]);
+    printf("Array before sorting:\n");
+    for(i=0; i<n; i++)
+        printf("\t%d",a[i]);
+    mergeSort(n,a);
+    printf("\nArray after sorting:\n");
+    for(i=0; i<n; i++)
+        printf("\t%d",a[i]);
+    return 0;
 }
